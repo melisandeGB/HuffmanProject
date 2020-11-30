@@ -102,3 +102,14 @@ void translate_texte_with_huffman(){
     fclose(texte);
     fclose(encode_texte);
 }
+
+1-Créé array // Facile
+2-prendre une lettre // facile
+3-Recherche dicotomi // difficile
+4-deux cas :
+	4.1-si elle existe et bah on fait plus 1 à l'occurrence // facile
+	4.2-si elle existe pas
+		4.2.1 on recréé larray en +1 // facile
+        On créé une node avec al lettre // facile mis structure = node + int
+		4.2.2 et la on additione les 2 arrays : on copicolle l'array jusqua quon print le new nombre  puis on continue le print de larray de base // difficile
+5-On continue jusqua la fin du texte // Facile

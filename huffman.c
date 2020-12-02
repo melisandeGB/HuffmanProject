@@ -102,14 +102,34 @@ void translate_texte_with_huffman(){
     fclose(texte);
     fclose(encode_texte);
 }
-
+Fonction globale occurences* array_of_occurences();
 1-Créé array // Facile
-2-prendre une lettre // facile
-3-Recherche dicotomi // difficile
-4-deux cas :
-	4.1-si elle existe et bah on fait plus 1 à l'occurrence // facile
-	4.2-si elle existe pas
-		4.2.1 on recréé larray en +1 // facile
-        On créé une node avec al lettre // facile mis structure = node + int
-		4.2.2 et la on additione les 2 arrays : on copicolle l'array jusqua quon print le new nombre  puis on continue le print de larray de base // difficile
-5-On continue jusqua la fin du texte // Facile
+2. Create new structure : occurences
+	char/int letter
+	int occurence
+3-prendre une lettre // facile
+	"""Dans la fonction globale"""
+4-Recherche dicotomique // difficile
+	length
+	if > length/2
+	if < length/2
+5-deux cas :
+	5.1-si elle existe et bah on fait plus 1 à l'occurrence // facile
+		"""intégrée dans la globale"""
+		array[i]->occurence+=1
+	5.2-si elle existe pas
+		On créé une node avec al lettre // facile mis structure = node + int
+			Parameters: letter
+		5.2.1 on recréé larray en +1 // facile
+			Parameters : Length array
+			Return new Array
+		5.2.2 et la on additione les 2 arrays : on copicolle l'array jusqua quon print le new nombre  puis on continue le print de larray de base // difficile
+			parameters : Array
+				     Length
+				     Position letter
+				     New array
+			free old array !!
+			return new array
+6-On continue jusqua la fin du texte // Facile
+	Boucle while (txt_letter != EOF)
+"""On return l'array"""

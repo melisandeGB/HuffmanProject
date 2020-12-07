@@ -101,76 +101,16 @@ void translate_texte_with_huffman(){
     fclose(code);
     fclose(texte);
     fclose(encode_texte);
-}
-Fonction globale occurences* array_of_occurences();
-1-Créé array // Facile
-2. Create new structure : occurences
-	char/int letter
-	int occurence
-3-prendre une lettre // facile
-	"""Dans la fonction globale"""
-4-Recherche dicotomique // difficile
-	length
-	if > length/2
-	if < length/2
-5-deux cas :
-	5.1-si elle existe et bah on fait plus 1 à l'occurrence // facile
-		"""intégrée dans la globale"""
-		array[i]->occurence+=1
-	5.2-si elle existe pas
-		On créé une node avec al lettre // facile mis structure = node + int
-			Parameters: letter
-		5.2.1 on recréé larray en +1 // facile
-			Parameters : Length array
-			Return new Array
-		5.2.2 et la on additione les 2 arrays : on copicolle l'array jusqua quon print le new nombre  puis on continue le print de larray de base // difficile
-			parameters : Array
-				     Length
-				     Position letter
-				     New array
-			free old array !!
-			return new array
-6-On continue jusqua la fin du texte // Facile
-	Boucle while (txt_letter != EOF)
-"""On return l'array"""
+}		
 		
-		
-typedef struct Nodechar{
-    char data;
-    struct Nodechar* right;
-    struct Nodechar* left;
-}Nodechar;
-
-typedef struct Occurences{
-    Nodechar* data;
-    int occ;
-}Occurences;
-
-Nodechar* create_Nodechar(char letter){
-    Nodechar* letter_in_node = (Nodechar*)malloc(sizeof(Nodechar));
-    letter_in_node->data = letter;
-    letter_in_node->right = NULL;
-    letter_in_node->left = NULL;
-    return letter_in_node;
-}
-
-Occurences* create_Occurences(char letter){
-    Nodechar* letter_in_node = create_Nodechar(letter);
-    Occurences* letter_occurence = (Occurences*)malloc(sizeof(Occurences));
-    letter_occurence->data = letter_in_node;
-    letter_occurence->occ = 1;
-    return letter_occurence;
-}
-
-Occurences* add_two_array(Occurences* array, int* size_array, int position_letter, char letter){
-    *size_array = *size_array + 1;
-    Occurences* letter_occurence = create_Occurences(letter);
-    Occurences* new_array = (Occurences*)malloc((*size_array)*sizeof(Occurences));
+Node* add_two_array(Node* array, int* size_array, int position_letter, char letter){
+    *size_array += 1; // *size_array = *size_array + 1;
+    Node* newNode = create_node(letter, 1, 1, NULL, NULL);
     int i = 0;
     for(i=0;i<position_letter-1;i++){
         new_array[i]=array[i];
     }
-    new_array[position_letter-1]= *letter_occurence;
+    new_array[position_letter-1]= *newnode;
     for(i=position_letter;i<*size_array;i++){
         new_array[i] = array[i-1];
     }
@@ -178,13 +118,13 @@ Occurences* add_two_array(Occurences* array, int* size_array, int position_lette
     return new_array;
 }
 
-Occurences* array_of_occurences(){
+Node* array_of_occurences(){
     FILE* texte = fopen("texte.txt", "r");
     char letter = fgetc(texte);
     int* size_array = 0;
-    Occurences* array = NULL;
+    Node* array = NULL;
     while (letter != EOF){
-        //FONCTION DICOTOMIQUE AVEC LA LETTRE-----------------
+        //FONCTION DICOTOMIQUE AVEC LA LETTRE
         letter = fgetc(texte);
     }
     fclose(texte);

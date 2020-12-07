@@ -133,3 +133,60 @@ Fonction globale occurences* array_of_occurences();
 6-On continue jusqua la fin du texte // Facile
 	Boucle while (txt_letter != EOF)
 """On return l'array"""
+		
+		
+typedef struct Nodechar{
+    char data;
+    struct Nodechar* right;
+    struct Nodechar* left;
+}Nodechar;
+
+typedef struct Occurences{
+    Nodechar* data;
+    int occ;
+}Occurences;
+
+Nodechar* create_Nodechar(char letter){
+    Nodechar* letter_in_node = (Nodechar*)malloc(sizeof(Nodechar));
+    letter_in_node->data = letter;
+    letter_in_node->right = NULL;
+    letter_in_node->left = NULL;
+    return letter_in_node;
+}
+
+Occurences* create_Occurences(char letter){
+    Nodechar* letter_in_node = create_Nodechar(letter);
+    Occurences* letter_occurence = (Occurences*)malloc(sizeof(Occurences));
+    letter_occurence->data = letter_in_node;
+    letter_occurence->occ = 1;
+    return letter_occurence;
+}
+
+Occurences* add_two_array(Occurences* array, int* size_array, int position_letter, char letter){
+    *size_array = *size_array + 1;
+    Occurences* letter_occurence = create_Occurences(letter);
+    Occurences* new_array = (Occurences*)malloc((*size_array)*sizeof(Occurences));
+    int i = 0;
+    for(i=0;i<position_letter-1;i++){
+        new_array[i]=array[i];
+    }
+    new_array[position_letter-1]= *letter_occurence;
+    for(i=position_letter;i<*size_array;i++){
+        new_array[i] = array[i-1];
+    }
+    free(array);
+    return new_array;
+}
+
+Occurences* array_of_occurences(){
+    FILE* texte = fopen("texte.txt", "r");
+    char letter = fgetc(texte);
+    int* size_array = 0;
+    Occurences* array = NULL;
+    while (letter != EOF){
+        //FONCTION DICOTOMIQUE AVEC LA LETTRE-----------------
+        letter = fgetc(texte);
+    }
+    fclose(texte);
+    return array;
+}
